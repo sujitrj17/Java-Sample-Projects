@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Traveller} from './traveller/Traveller.model'
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularWebServiceCrud';
+
+  onSubmit(){
+
+  }
+
+  register:any = {};
 }

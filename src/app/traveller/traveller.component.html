@@ -1,0 +1,74 @@
+
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button (click)="showAll()">Show All</button>
+    <button (click)="onlyLoginPage()">Login</button>
+  </nav>
+
+  <div *ngIf="loginPage" style="text-align: center">
+    <h1>-: Login :-</h1>
+    <pre>
+  UserName - <input type="text" [(ngModel)]="uname"><br>
+  Password - <input type="text" [(ngModel)]="pass"><br>
+  {{incorrectLogin}}
+ <button (click)="login()" class="btn btn-outline-success my-2 my-sm-0" >Login</button>
+ <button (click)="registerPage()" class="btn btn-outline-success my-2 my-sm-0">Register</button>
+</pre>
+</div>
+
+<div *ngIf="registerPageDisplay" style="text-align: center">
+  <h3>Registration</h3><br>
+  <pre>
+  Name    <input type="text" placeholder="Enter name" [(ngModel)]="tr.name"><br>
+  Surname <input type="text" placeholder="Enter surname" [(ngModel)]="tr.surname"><br>
+  Gender   <input type="text" placeholder="Enter gender" [(ngModel)]="tr.gender"><br>
+  UserName <input type="text" placeholder="Username" [(ngModel)]="tr.username"><br>
+  Password <input type="text" placeholder="Password" [(ngModel)]="tr.password"><br>
+  <button (click)="addTraveller(tr)">Register</button>
+</pre>
+</div>
+
+<div *ngIf="tableDisplay">
+  <table class="table table-success">
+    <tr>
+      <th>Id</th>
+      <th>name</th>
+      <th>surname</th>
+      <th>gender</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Choice</th>
+    </tr>
+    <tr *ngFor="let i of TrArray">
+      <td>{{i.id}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.surname}}</td>
+      <td>{{i.gender}}</td>
+      <td>{{i.username}}</td>
+      <td>{{i.password}}</td>
+      <button (click)="onlyEditPage(i)">Edit</button>
+      <button (click)="delete(i.id)">Delete</button>
+    </tr>
+  </table>
+  <button (click)="showHomePage()">Home</button>
+</div>
+
+<div *ngIf="editFormDisplay">
+  Id <input type="hidden" [(ngModel)]="editArray.id">
+  Name <input type="text"  [(ngModel)]="editArray.name"><br>
+  Surname <input type="text" [(ngModel)]="editArray.surname"><br>
+  Gender <input type="text"  [(ngModel)]="editArray.gender"><br>
+  UserName <input type="text"  [(ngModel)]="editArray.username"><br>
+  Password <input type="text"  [(ngModel)]="editArray.password"><br>
+  <button (click)="update(editArray)">Update</button>
+</div>
+
+<div *ngIf="successMessage">
+  <h1>User {{nm}} is Registered</h1>
+
+</div>
+
+<div>
+  <button (click)="pageTransition(1)">login</button>
+  <button  (click)="pageTransition(2)">register</button>
+  <button  (click)="pageTransition(3)">home</button>
+</div>
